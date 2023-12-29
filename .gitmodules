@@ -1,0 +1,3 @@
+[submodule "BCore"]
+	path = BCore
+	url = https://github.com/Bish0pdev/BCore
