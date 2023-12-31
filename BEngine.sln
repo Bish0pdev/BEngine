@@ -5,7 +5,7 @@ VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Game", "Game\src\Game.csproj", "{84C1FFBA-8F45-4D2A-8249-C24F6F43A394}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BCore", "BCore\BCore\BCore.csproj", "{8757D232-041F-4E6F-AEA6-BDE1B8C41FC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BCore", "BCore\BCore\BCore.csproj", "{8757D232-041F-4E6F-AEA6-BDE1B8C41FC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
