@@ -16,8 +16,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\BCore\BCore\Camera.cs" Link="Core\Camera.cs" />
-    <Compile Include="..\..\BCore\BCore\Component.cs" Link="Core\Component.cs" />
-    <Compile Include="..\..\BCore\BCore\Entity.cs" Link="Core\Entity.cs" />
+    <Compile Include="..\..\BCore\BCore\Component.cs" Link="Core\ECS\Component.cs" />
+    <Compile Include="..\..\BCore\BCore\Entity.cs" Link="Core\ECS\Entity.cs" />
     <Compile Include="..\..\BCore\BCore\RandomHelper.cs" Link="Core\RandomHelper.cs" />
     <Compile Include="..\..\BCore\BCore\SimpleTextures.cs" Link="Core\SimpleTextures.cs" />
   </ItemGroup>
@@ -31,6 +31,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Textures\" />
+    <Folder Include="Core\ECS\" />
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
     <Message Text="Restoring dotnet tools" Importance="High" />

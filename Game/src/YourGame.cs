@@ -7,14 +7,14 @@ using System;
 using System.Linq;
 namespace BEngine
 {
-    public class Game1 : Game
+    public class YourGame : Game
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         Camera mainCam;
         private List<Entity> activeEntitys = new List<Entity>();
         TextRenderer FPSCounter;
-        public Game1()
+        public YourGame()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -24,19 +24,18 @@ namespace BEngine
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            mainCam = new Camera(new Vector2(-Window.ClientBounds.Width/2,-Window.ClientBounds.Height/2));
+            mainCam = new Camera(new Vector2(-Window.ClientBounds.Width / 2, -Window.ClientBounds.Height / 2));
 
             Texture2D circletex = SimpleTextures.CreateCircleTextureData(10, Color.White, GraphicsDevice);
             Texture2D square = SimpleTextures.CreateSquareTexture(GraphicsDevice, 100, Color.AntiqueWhite);
             Entity circle = new Entity();
             circle.AddComponent(new SpriteRenderer(circletex));
-            circle.AddComponent(new PhysicsComponent());
             activeEntitys.Add(circle);
 
             Entity Floor = new Entity();
             Floor.AddComponent(new SpriteRenderer(square));
-            Floor.AddComponent(new BoxCollider());
-            Floor.MoveTo(new Vector2(0, 30));
+            Floor.MoveTo(new Vector2(0, 200));
+            Floor.SetScale(new Vector2(10f, .4f));
             activeEntitys.Add(Floor);
             FPSCounter = new TextRenderer(Content.Load<SpriteFont>("DefaultFont"));
             base.Initialize();
@@ -81,7 +80,7 @@ namespace BEngine
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
-            
+
             _spriteBatch.Begin(transformMatrix: mainCam.TransformMatrix);
 
             for (int i = 0; i < activeEntitys.Count; i++)
