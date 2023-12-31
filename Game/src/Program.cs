@@ -1,3 +1,3 @@
 ﻿
-using var engine = new BEngine.Monogame();
+using var engine = new BEngine.YourGame();
 engine.Run();

@@ -26,8 +26,8 @@ namespace BEngine
             // TODO: Add your initialization logic here
             mainCam = new Camera(new Vector2(-Window.ClientBounds.Width / 2, -Window.ClientBounds.Height / 2));
 
-            Texture2D circletex = SimpleTextures.CreateCircleTextureData(10, Color.White, GraphicsDevice);
-            Texture2D square = SimpleTextures.CreateSquareTexture(GraphicsDevice, 100, Color.AntiqueWhite);
+            Texture2D circletex = SimpleTextures.CreateWireframeCircleTexture(10, Color.White,1,GraphicsDevice);
+            Texture2D square = SimpleTextures.CreateWireframeSquareTexture(GraphicsDevice, 100, Color.AntiqueWhite,5);
             Entity circle = new Entity();
             circle.AddComponent(new SpriteRenderer(circletex));
             activeEntitys.Add(circle);
@@ -40,7 +40,7 @@ namespace BEngine
             FPSCounter = new TextRenderer(Content.Load<SpriteFont>("DefaultFont"));
             base.Initialize();
         }
-
+        
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
