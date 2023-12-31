@@ -1,3 +1,6 @@
 [submodule "BCore"]
 	path = BCore
 	url = https://github.com/Bish0pdev/BCore
+[submodule "BParticles"]
+	path = BParticles
+	url = https://github.com/Bish0pdev/BParticles/
