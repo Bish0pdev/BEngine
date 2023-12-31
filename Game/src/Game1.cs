@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using BCore;
 using System;
+using System.Linq;
 namespace BEngine
 {
     public class Game1 : Game
@@ -12,7 +13,7 @@ namespace BEngine
         private SpriteBatch _spriteBatch;
         Camera mainCam;
         private List<Entity> activeEntitys = new List<Entity>();
-
+        TextRenderer FPSCounter;
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -35,8 +36,9 @@ namespace BEngine
             Entity Floor = new Entity();
             Floor.AddComponent(new SpriteRenderer(square));
             Floor.AddComponent(new BoxCollider());
-            Floor.MoveTo(new Vector2(0, 100));
+            Floor.MoveTo(new Vector2(0, 30));
             activeEntitys.Add(Floor);
+            FPSCounter = new TextRenderer(Content.Load<SpriteFont>("DefaultFont"));
             base.Initialize();
         }
 
@@ -86,8 +88,13 @@ namespace BEngine
             {
                 activeEntitys[i].Draw(_spriteBatch);
             }
-            _spriteBatch.End();
 
+            _spriteBatch.End();
+            _spriteBatch.Begin();
+            FPSCounter.SetText(string.Format("FPS: {0}", Math.Round(1 / gameTime.ElapsedGameTime.TotalSeconds)));
+            FPSCounter.Draw(_spriteBatch);
+
+            _spriteBatch.End();
             base.Draw(gameTime);
         }
     }
