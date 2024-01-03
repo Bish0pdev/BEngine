@@ -29,15 +29,12 @@ namespace BEngine
             Entity circle = new Entity();
             SpriteRenderer circlesprite = new SpriteRenderer(SimpleTextures.CreateWireframeCircleTexture(100, Color.White, 2, GraphicsDevice));
             circle.AddComponent(circlesprite);
-            circle.AddComponent(new Collider());
-            //circle.GetComponent<Collider>().ShowDebug(true);
             activeEntitys.Add(circle);
 
             Entity Floor = new Entity();
             Floor.AddComponent(new SpriteRenderer(square));
             Floor.MoveTo(new Vector2(0, 200));
             Floor.SetScale(new Vector2(Window.ClientBounds.X, 10f));
-            Floor.AddComponent(new Collider());
             activeEntitys.Add(Floor);
             FPSCounter = new TextRenderer(Content.Load<SpriteFont>("DefaultFont"));
             base.Initialize();
