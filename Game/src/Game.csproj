@@ -16,8 +16,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\BCore\BCore\Camera.cs" Link="Core\Camera.cs" />
-    <Compile Include="..\..\BCore\BCore\Component.cs" Link="Core\ECS\Component.cs" />
-    <Compile Include="..\..\BCore\BCore\Entity.cs" Link="Core\ECS\Entity.cs" />
+    <Compile Include="..\..\BCore\BCore\ECS\Component.cs" Link="Core\ECS\Component.cs" />
+    <Compile Include="..\..\BCore\BCore\ECS\Entity.cs" Link="Core\ECS\Entity.cs" />
     <Compile Include="..\..\BCore\BCore\RandomHelper.cs" Link="Core\RandomHelper.cs" />
     <Compile Include="..\..\BCore\BCore\SimpleTextures.cs" Link="Core\SimpleTextures.cs" />
   </ItemGroup>

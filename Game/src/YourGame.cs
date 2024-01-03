@@ -25,17 +25,19 @@ namespace BEngine
         {
             // TODO: Add your initialization logic here
             mainCam = new Camera(new Vector2(-Window.ClientBounds.Width / 2, -Window.ClientBounds.Height / 2));
-
-            Texture2D circletex = SimpleTextures.CreateWireframeCircleTexture(10, Color.White,1,GraphicsDevice);
             Texture2D square = SimpleTextures.CreateWireframeSquareTexture(GraphicsDevice, 100, Color.AntiqueWhite,5);
             Entity circle = new Entity();
-            circle.AddComponent(new SpriteRenderer(circletex));
+            SpriteRenderer circlesprite = new SpriteRenderer(SimpleTextures.CreateWireframeCircleTexture(100, Color.White, 2, GraphicsDevice));
+            circle.AddComponent(circlesprite);
+            circle.AddComponent(new Collider());
+            //circle.GetComponent<Collider>().ShowDebug(true);
             activeEntitys.Add(circle);
 
             Entity Floor = new Entity();
             Floor.AddComponent(new SpriteRenderer(square));
             Floor.MoveTo(new Vector2(0, 200));
-            Floor.SetScale(new Vector2(10f, .4f));
+            Floor.SetScale(new Vector2(Window.ClientBounds.X, 10f));
+            Floor.AddComponent(new Collider());
             activeEntitys.Add(Floor);
             FPSCounter = new TextRenderer(Content.Load<SpriteFont>("DefaultFont"));
             base.Initialize();
@@ -56,9 +58,15 @@ namespace BEngine
             // Move the camera based on keyboard input
             KeyboardState keyboardState = Keyboard.GetState();
 
-            float cameraSpeed = 5f; // Adjust the speed as needed
+            float cameraSpeed; // Adjust the speed as needed
             Vector2 cameraMovement = Vector2.Zero;
-
+            if(keyboardState.IsKeyDown(Keys.LeftShift))
+            {
+                cameraSpeed = 5f;
+            } else
+            {
+                cameraSpeed = 3f;
+            }
             if (keyboardState.IsKeyDown(Keys.W))
                 cameraMovement.Y -= cameraSpeed;
             if (keyboardState.IsKeyDown(Keys.A))
@@ -68,7 +76,7 @@ namespace BEngine
             if (keyboardState.IsKeyDown(Keys.D))
                 cameraMovement.X += cameraSpeed;
 
-            mainCam.Position += cameraMovement;
+            activeEntitys[0].Position += cameraMovement;
 
             for (int i = 0; i < activeEntitys.Count; i++)
             {
