@@ -13,6 +13,7 @@ namespace BEngine
         private SpriteBatch _spriteBatch;
         Camera mainCam;
         private List<Entity> activeEntitys = new List<Entity>();
+        Entity player;
         TextRenderer FPSCounter;
         public YourGame()
         {
@@ -25,17 +26,13 @@ namespace BEngine
         {
             // TODO: Add your initialization logic here
             mainCam = new Camera(new Vector2(-Window.ClientBounds.Width / 2, -Window.ClientBounds.Height / 2));
-            Texture2D square = SimpleTextures.CreateWireframeSquareTexture(GraphicsDevice, 100, Color.AntiqueWhite,5);
-            Entity circle = new Entity();
-            SpriteRenderer circlesprite = new SpriteRenderer(SimpleTextures.CreateWireframeCircleTexture(100, Color.White, 2, GraphicsDevice));
-            circle.AddComponent(circlesprite);
-            activeEntitys.Add(circle);
-
-            Entity Floor = new Entity();
-            Floor.AddComponent(new SpriteRenderer(square));
-            Floor.MoveTo(new Vector2(0, 200));
-            Floor.SetScale(new Vector2(Window.ClientBounds.X, 10f));
-            activeEntitys.Add(Floor);
+            Texture2D square = SimpleTextures.CreateWireframeSquareTexture(GraphicsDevice, 100, Color.White, 2);
+            player = new Entity();
+            player.AddComponent(new SpriteRenderer(square));
+            SpriteRenderer gun = new SpriteRenderer(square, Color.Red);
+            gun.Offset = new Vector2(0, -50);
+            player.AddComponent(gun);
+            activeEntitys.Add(player);
             FPSCounter = new TextRenderer(Content.Load<SpriteFont>("DefaultFont"));
             base.Initialize();
         }
